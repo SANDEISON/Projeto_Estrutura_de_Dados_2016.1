@@ -72,6 +72,7 @@ git init | Inicia o Git;
 git status | Exibe as informações do projeto;
 git add . | Adiciona  todos os documentos locais ao GitHub;
 git commit -m "mensagem de commit" | Efetua o commit;
+git clone link do repositorio | Efetua o download do repositorio
 git push nomedoSeuProjeto | Confirma o commit, em seguida solicita o usuario e senha;
 git pull nomedoSeuProjeto master | Trás todas as modificações do GitHub para o computador local;
 git config --global user.email seuEmail | Seta um email global para o computador;
