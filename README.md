@@ -23,6 +23,7 @@
 
 ##Apresentação do seminário
 
+
 ###Tema : Algoritmo de Prim
 
 
@@ -30,11 +31,19 @@
 
 ##Algorítimo de Huffman
 
+
+
+
+
+
 ### :beginner: Requisitos 
 * Qt Creator
   * Install <https://www.qt.io/ide/>
 
-* Use <a href="https://daringfireball.net/projects/markdown/" target="_blank">Markdown 1.0.1</a>
+
+
+
+
 
 
 
@@ -43,7 +52,14 @@
 
 
 
+
+
+
 ##Casos de Testes
+
+
+
+
 
 
 
