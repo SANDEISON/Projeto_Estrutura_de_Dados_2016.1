@@ -77,4 +77,5 @@ git push nomedoSeuProjeto | Confirma o commit, em seguida solicita o usuario e s
 git pull nomedoSeuProjeto master | Trás todas as modificações do GitHub para o computador local;
 git config --global user.email seuEmail | Seta um email global para o computador;
 git config --global user.name seuNome | Seta um nome global para o computador;
+git push -u origin master | Enviar arquivos para o repositório remoto;
 
