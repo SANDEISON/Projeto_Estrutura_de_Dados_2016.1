@@ -6,11 +6,11 @@ CONFIG -= qt
 SOURCES += main.c \
     compressao.c \
     descompressao.c \
-    filaprioridade.c \
-    frequencia.c
+    fila_prioridade.c \
+    hash.c
 
 HEADERS += \
     compressao.h \
     descompressao.h \
-    filaprioridade.h \
-    frequencia.h
+    fila_prioridade.h \
+    hash.h
