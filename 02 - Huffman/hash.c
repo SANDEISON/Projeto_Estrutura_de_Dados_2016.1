@@ -172,7 +172,7 @@ void print_hash_table(HashTable *ht, unsigned int TABLE_SIZE) {
 void elements_Para_Fila(Element *element, Fila* fp) {
     if(element != NULL){
       //printf("%c - %d  ", element->key, element->value);
-      insere_FilaPrio(fp, element->key, element->value);
+      enqueue(fp, element->key, element->value);
       elements_Para_Fila(element->next_element,fp);
     }
 }
@@ -185,6 +185,7 @@ void hash_Para_Fila(HashTable *ht , unsigned int TABLE_SIZE , Fila *fp){
     for(i = 0; i < TABLE_SIZE; ++i) {
       if(ht->table[i] != NULL){
           elements_Para_Fila(ht->table[i],fp);
+         // printf("\n");
       }
     }
 }

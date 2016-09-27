@@ -46,18 +46,17 @@ void compress(FILE *arquivo,  char *endereco){
 
 
  // Criando a Fila de Prioridade;
-    FilaPrio* fp = cria_FilaPrio(tamanho);
+    Heap* fp = create_heap(tamanho);
 
     //Passando a Frequencia para a Fila
     hash_Para_Fila(ht,tamanho,fp);
 
-    //imprime_FilaPrio(fp);
-
+    //printHeap(fp);
 
 
 
     liberaHash(ht);
-    libera_FilaPrio(fp);
+    //libera_FilaPrio(fp);
 
    printf("FIM DA COMPRESSAO!\n");
 }

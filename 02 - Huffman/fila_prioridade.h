@@ -1,19 +1,22 @@
 typedef struct node Node;
-typedef struct fila_prioridade FilaPrio;
+typedef struct heap Heap;
 
+Heap* create_heap(unsigned int SIZE);
 
-FilaPrio* cria_FilaPrio(unsigned int SIZE);
-void libera_FilaPrio(FilaPrio* fp);
-void insere_FilaPrio(FilaPrio* fp, unsigned char BYTE, unsigned int prioridade);
-void imprime_FilaPrio(FilaPrio* fp);
+unsigned int get_parent_index(Heap *heap, unsigned int i);
 
-/*
-int consulta_FilaPrio(FilaPrio* fp, char* nome);
+unsigned int get_left_index(Heap *heap, unsigned int i);
 
+unsigned int get_right_index(Heap *heap, unsigned int i);
 
-int remove_FilaPrio(FilaPrio* fp);
-int tamanho_FilaPrio(FilaPrio* fp);
-int estaCheia_FilaPrio(FilaPrio* fp);
-int estaVazia_FilaPrio(FilaPrio* fp);
-void imprime_FilaPrio(FilaPrio* fp);
-*/
+unsigned char value_of(Heap *heap, unsigned int i);
+
+void enqueue(Heap *heap, unsigned char carac, unsigned int value);
+
+Node *dequeue(Heap *heap);
+
+void max_heapify(Heap *heap, unsigned int i);
+
+void heapsort(Heap *heap);
+
+void printHeap(Heap* heap);
