@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <fila_prioridade.h>
+#include <heap.h>
 
 struct node {
     unsigned char item;
@@ -89,10 +89,16 @@ void printHeap(Heap* heap){
 }
 
  Node* dequeue(Heap *heap){
+
+    /* Para Removar o elemento de maior valor
     Node* value = heap->dados[1];
     heap->dados[1] = heap->dados[heap->size];
     heap->size--;
-    max_heapify(heap, 1);
+    max_heapify(heap, 1);    
+    */
+    //Removendo o item de menor valor
+    Node* value = heap->dados[heap->size];
+    heap->size--;
     return value;
 }
 
@@ -126,6 +132,7 @@ void max_heapify(Heap *heap, unsigned int i){
 
 void heapsort(Heap *heap){
     unsigned int i;
+    unsigned int tam = heap->size;
     for (i = heap->size; i >= 2; i--) {
       Node* temp;
       temp = heap->dados[1];
@@ -134,5 +141,7 @@ void heapsort(Heap *heap){
       heap->size--;
       max_heapify(heap, 1);
    }
+   heap->size = tam;
+
 }
 

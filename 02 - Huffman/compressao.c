@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "compressao.h"
-#include "fila_prioridade.h"
+#include "heap.h"
 #include "hash.h"
 
 
@@ -48,10 +48,11 @@ void compress(FILE *arquivo,  char *endereco){
  // Criando a Fila de Prioridade;
     Heap* fp = create_heap(tamanho);
 
-    //Passando a Frequencia para a Fila
+    //Passando a Frequencia para a Fila de prioridade
     hash_Para_Fila(ht,tamanho,fp);
+    //Chamo o heapSort para deixar a heep ordenada.
+    heapsort(fp);
 
-    //printHeap(fp);
 
 
 
