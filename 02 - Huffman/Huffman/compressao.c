@@ -31,14 +31,14 @@ void compress(FILE *arquivo,  char *endereco){
 
 // Criando uma tabela hash para a frequencia dos arquivos
 
-    HashTable* ht = createHashtable(tamanho);
+    HashTable* hashT = createHashtable(tamanho);
     unsigned char frequencia;
 
     fread(&frequencia, sizeof(unsigned char), 1, arquivo);
     while (!feof(arquivo))
     {
         //printf("%c\n",frequencia);
-        putFrequencia(ht,frequencia,tamanho);
+        putFrequencia(hashT,frequencia,tamanho);
         fread(&frequencia, sizeof(unsigned char), 1, arquivo);
     }
 
@@ -49,39 +49,31 @@ void compress(FILE *arquivo,  char *endereco){
 
 
 // Criando a Fila de Prioridade;
-    FilaPrio* fp = create_fila_priori(tamanho);
+    FilaPrio* filaP = create_fila_priori(tamanho);
 
     //Passando a Frequencia para a Fila de prioridade
-    hash_Para_Fila(ht,tamanho,fp);
+    hash_Para_Fila(hashT,tamanho,filaP);
 
-    print_fila_priori(fp);
-    printf("\n\n");
-    create_tree(fp);
+    //Cria a arvore
+    create_tree(filaP);
 
-
-
-
-
-
+    //Passa para a hash os newkey
+    hasharvore(filaP,hashT);
 
  // Cabeçalho Huffman
 
-    //Tamanho do Lixo
-    unsigned int trash;
 
-    //Tamanho do Arvore
-    unsigned int sizetree ;
-    //printf("%d\n",sizetree);
+   //Tamanho da Arvore
+   unsigned int sizetree = PrioTree(filaP) ;
 
 
-
+   //Tamanho do Lixo
+   unsigned int trash;
 
 
 
 
-
-
-    liberaHash(ht);
+    liberaHash(hashT);
     //libera_FilaPrio(fp);
 
    printf("FIM DA COMPRESSAO!\n");

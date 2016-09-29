@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "hash.h"
 #include "fila_prioridade.h"
 
@@ -8,6 +9,7 @@
 struct element {
   unsigned char key;
   unsigned int value;
+  unsigned char *newkey;
   Element *next_element;
 };
 
@@ -38,6 +40,10 @@ HashTable* createHashtable(unsigned int TABLE_SIZE){
 
 }
 
+
+unsigned int tableSize(HashTable* ht) {
+    return ht->TABLE_SIZE;
+}
 
 void liberaHash(HashTable* ht){
     if(ht != NULL){
@@ -85,6 +91,29 @@ void putFrequencia(HashTable *ht, unsigned char key, unsigned int t) {
     ht->table[h] = new_element;
   }
 }
+
+
+void putNewkey(HashTable *ht, unsigned char key , unsigned char *newkey, unsigned int t) {
+
+
+    unsigned int h = hash(key, t);
+
+    Element *element = ht->table[h];
+    int tamanho = strlen(newkey);
+    tamanho++;
+    while(element != NULL) {
+      if(element->key == key){
+         //printf("Imprimindo  : KEY  %c  NEWKEY  %s  tamanho %d\n",key, newkey ,tamanho  );
+         element->newkey =(unsigned char*)malloc(tamanho*sizeof(unsigned char));
+         strcpy( element->newkey, newkey);
+         break;
+      }
+       element = element->next_element;
+     }
+
+}
+
+
 
 
 char get(HashTable *ht, unsigned char key, unsigned int t) {
@@ -154,6 +183,9 @@ void print_elements(Element *element) {
 
   print_elements(element->next_element);
 }
+
+
+
 
 void print_hash_table(HashTable *ht, unsigned int TABLE_SIZE) {
   unsigned int i;
