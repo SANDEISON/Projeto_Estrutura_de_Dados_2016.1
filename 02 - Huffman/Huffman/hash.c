@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "hash.h"
-#include "heap.h"
+#include "fila_prioridade.h"
 
 
 
@@ -12,7 +12,7 @@ struct element {
 };
 
 struct hashtable {
-  int TABLE_SIZE;
+  unsigned int TABLE_SIZE;
   struct Element **table;
 };
 
@@ -189,3 +189,4 @@ void hash_Para_Fila(HashTable *ht , unsigned int TABLE_SIZE , Fila *fp){
       }
     }
 }
+

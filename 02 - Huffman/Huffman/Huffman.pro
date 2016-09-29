@@ -7,10 +7,10 @@ SOURCES += main.c \
     compressao.c \
     descompressao.c \
     hash.c \
-    heap.c
+    fila_prioridade.c
 
 HEADERS += \
     compressao.h \
     descompressao.h \
     hash.h \
-    heap.h
+    fila_prioridade.h
