@@ -32,12 +32,11 @@
 ##Algorítimo de Huffman
 
 
-
-
-
-
 ### :beginner: Requisitos 
-* Qt Creator
+* Qt Creator 
+
+  Versão 5.7.0
+  
   * Install <https://www.qt.io/ide/>
 
 
@@ -49,9 +48,27 @@
 
 ##Contagem e plotagem
 
+### :beginner: Requisitos 
+  
+* R
+
+Versão  3.3.1 for Windows (32/64 bit)
+
+Link :
+
+ *https://cran.r-project.org/bin/windows/base/
 
 
+* R Studio Desktop 
 
+Versão 0.99.903
+
+Link :
+
+ *https://www.rstudio.com/products/rstudio/download3/
+
+
+Para executar o arquivo em c, utilizamos o Qt Creator 
 
 
 
