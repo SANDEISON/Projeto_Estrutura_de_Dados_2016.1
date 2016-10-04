@@ -5,12 +5,14 @@ CONFIG -= qt
 
 SOURCES += main.c \
     compressao.c \
-    descompressao.c \
-    hash.c \
-    fila_prioridade.c
+    freq_w.c \
+    adt.c \
+    bitop.c \
+    descompressao.c
 
 HEADERS += \
     compressao.h \
-    descompressao.h \
-    hash.h \
-    fila_prioridade.h
+    freq_w.h \
+    adt.h \
+    bitop.h \
+    descompressao.h
