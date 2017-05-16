@@ -15,7 +15,7 @@ void descompress(FILE *f,  char *h){
     int trash;
     //Tamanho da  arvore
     int sizeTree, savesizeTree;
-    //Para Obter a arvore do arquivo
+    //Para obter a arvore do arquivo
     pnode *huff;
     //Um novo arquivo com o nome e a extenção original
     FILE *Writeoutput;

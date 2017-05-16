@@ -1,42 +1,38 @@
+/*avl.c*/
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "avl.h"
+#include "cp.h"
 
-struct AVL
+ struct AVL
 {
     int value;
-    struct AVL* left;
-    struct AVL* right;
-    int height;
+    struct AVL*  left;
+    struct AVL*  right;
+    int      height;
 };
 
 
-int searchAVL(int value, AVL *tree, int *comparacoes)
-{
-    if (tree != NULL && tree->value != value)
-    {
-        *comparacoes += 1;
-        if( value < tree->value )
-        {
-            searchAVL( value, tree->left, comparacoes);
-        }
-        else
-        {
-            searchAVL( value, tree->right, comparacoes);
-        }
-     }
+ int searchAVL(int value, AVL *tree, int *comparacoes)
+ {
+	 if (tree != NULL && tree->value != value)
+	 {
+		 *comparacoes += 1;
+		 if( value < tree->value )
+			 searchAVL( value, tree->left, comparacoes);
+		 else
+			 searchAVL( value, tree->right, comparacoes);
+	 }
      return *comparacoes;
-}
+ }
 
-
-
-int h( AVL* tree )
-{
+ int h( AVL* tree )
+ {
      if( tree == NULL )
          return -1;
      else
          return tree->height;
-}
+ }
 
  int max( int l, int r)
  {

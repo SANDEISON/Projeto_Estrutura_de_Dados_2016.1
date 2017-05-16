@@ -22,6 +22,22 @@ void printBinaryTree(Binarytree *bt);
 int searchNode (Binarytree *bt, int value, int *x);
 
 
+/**  AVL */
+typedef struct AVL AVL;
 
+int searchAVL(int value, AVL *tree, int *comparacoes);
 
+AVL* insert( int value, AVL *tree );
 
+void printAVL(AVL *tree);
+
+/* Lista encadeada*/
+typedef struct node Node;
+
+Node* createLinkedList();
+
+Node* insertNodeList(Node *node, int item);
+
+void printLinkedList(Node *first);
+
+int search(Node *first, int item);

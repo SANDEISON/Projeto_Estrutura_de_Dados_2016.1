@@ -7,13 +7,15 @@
 #include "bitop.h"
 
 //STRUCTS
-struct node{
+struct node
+{
     int v;
     unsigned char c;
     node *nextnode;
 };
 
-struct pnode{
+struct pnode
+{
     int v;
     unsigned char c;
     pnode *nextpnode;
@@ -26,17 +28,20 @@ struct pnode{
 //NODE
 
 // INICIA UMA VARIAVEL DO TIPO NODE
-node *createnode(){
+node *createnode()
+{
     return NULL;
 }
 
 //VERIFICA SE UMA VARIAVEL DO TIPO NODE EH VAZIA
-int isEmpty(node *first){
+int isEmpty(node *first)
+{
     return (first == NULL);
 }
 
 // INSERE UMA VARIAVEL DO TIPO NODE EM UMA LISTA DE NODES
-node *insertnode( node *first, int value, unsigned char character ){
+node *insertnode( node *first, int value, unsigned char character )
+{
     node *newnode = (node*)malloc(sizeof(node));
     newnode -> v = value;
     newnode -> c = character;
@@ -45,8 +50,10 @@ node *insertnode( node *first, int value, unsigned char character ){
 }
 
 //IMPRIME UMA LISTA DO TIPO NODE
-void printlist(node *first){
-    if(!isEmpty(first)){
+void printlist(node *first)
+{
+    if(!isEmpty(first))
+    {
         //printf("Letra %c com frequencia %d\n", first -> c, first -> v);
         printf("%d",first -> v);
         printlist(first -> nextnode);
@@ -56,17 +63,20 @@ void printlist(node *first){
 
 //PNODE
 //INICIA UMA VARIAVEL DO TIPO PNODE
-pnode *startpnode(){
+pnode *startpnode()
+{
     return NULL;
 }
 
 //VERIFICA SE O ELEMENTO DO TIPO PNODE EH VAZIO
-int ispEmpty(pnode *first){
+int ispEmpty(pnode *first)
+{
     return (first == NULL);
 }
 
 //CRIA UMA VARIAVEL DO TIPO PNODE
-pnode *createpnode(int value, char character, pnode *left, pnode *right){
+pnode *createpnode(int value, char character, pnode *left, pnode *right)
+{
     pnode *aux;
     aux = (pnode*)malloc(sizeof(pnode));
     aux -> v = value;
@@ -78,8 +88,10 @@ pnode *createpnode(int value, char character, pnode *left, pnode *right){
 }
 
 //INSERE UM PNODE EM UMA FILA DE PRIORIDADE
-pnode *insertpnode(pnode *first, pnode *insert){
-    if(ispEmpty(first) || insert -> v <= first -> v){
+pnode *insertpnode(pnode *first, pnode *insert)
+{
+    if(ispEmpty(first) || insert -> v <= first -> v)
+    {
         insert -> nextpnode = first;
         return insert;
     }
@@ -90,11 +102,14 @@ pnode *insertpnode(pnode *first, pnode *insert){
 }
 
 //CALCULA A ALTURA DE UMA ARVORE DO TIPO PNODE
-int h_tree(pnode *root){
-    if (ispEmpty(root)){
+int h_tree(pnode *root)
+{
+    if (ispEmpty(root))
+    {
        return -1;
     }
-    else{
+    else
+    {
         int h;
         int hleft;
         int hright;
@@ -102,7 +117,8 @@ int h_tree(pnode *root){
         hleft = h_tree(root->left);
         hright = h_tree(root->right);
         h = hleft + 1;
-        if (hleft < hright){
+        if (hleft < hright)
+        {
             h = hright + 1;
         }
         return h;
@@ -110,14 +126,17 @@ int h_tree(pnode *root){
 }
 
 //CRIA UMA LISTA DE PRIORIDADE DO TIPO PNODE A PARTIR DE UMA LISTA DO TIPO INT
-pnode *plista(int *p){
+pnode *plista(int *p)
+{
     int i;
     pnode *pn;
     pnode *aux;
     pn = startpnode();
     aux = startpnode();
-    for( i = 0; i <= 255; i++){
-        if(p[i] != 0){
+    for( i = 0; i <= 255; i++)
+    {
+        if(p[i] != 0)
+        {
             aux = createpnode(p[i], i, NULL, NULL);
             pn = insertpnode(pn, aux);
         }
@@ -128,18 +147,22 @@ pnode *plista(int *p){
 //EndPNODE
 //HUFFMAN_TREE:
 //CRIA UMA ARVORE DE HUFFMAN(RECURSIVA)
-pnode *makeHtree(pnode *first){
-    if(!ispEmpty(first)){
+pnode *makeHtree(pnode *first)
+{
+    if(!ispEmpty(first))
+    {
         int value;
         pnode *root;
         root = startpnode();
-        if(!ispEmpty(first -> nextpnode)){
+        if(!ispEmpty(first -> nextpnode))
+        {
             value = (first -> v) + (first -> nextpnode -> v);
             root = createpnode( value, '*', first, first -> nextpnode);
             first = insertpnode(first -> nextpnode -> nextpnode, root);
             first = makeHtree(first);
         }
-        else if(h_tree(first) == 0){
+        else if(h_tree(first) == 0)
+        {
             value = first -> v;
             first = createpnode( value, '*', first, first -> nextpnode);
         }
@@ -148,13 +171,16 @@ pnode *makeHtree(pnode *first){
 }
 
 //VERIFICA SE O NO DA ARVORE EH UMA FOLHA
-int isLeaf(pnode *root){
+int isLeaf(pnode *root)
+{
     return (ispEmpty(root -> left) && ispEmpty(root -> right));
 }
 
 //IMPRIME NA TELA UMA ARVORE(RECURSIVA)
-void printHtree(pnode *root){
-    if(!ispEmpty(root)){
+void printHtree(pnode *root)
+{
+    if(!ispEmpty(root))
+    {
         printf("%c",root -> c);
         printHtree(root -> left);
         printHtree(root -> right);
@@ -162,10 +188,14 @@ void printHtree(pnode *root){
 }
 
 //IMPRIME NO ARQUIVO UMA ARVORE DE HUFFMAN DO TIPO PNODE
-void putHtree(FILE *Writeoutput, pnode *root){
-    if(!ispEmpty(root)){
-        if(isLeaf(root)){
-            if(root -> c == '\\' ||  root -> c == '*'){
+void putHtree(FILE *Writeoutput, pnode *root)
+{
+    if(!ispEmpty(root))
+    {
+        if(isLeaf(root))
+        {
+            if(root -> c == '\\' ||  root -> c == '*')
+            {
                 fputc('\\', Writeoutput);
             }
         }
@@ -177,9 +207,11 @@ void putHtree(FILE *Writeoutput, pnode *root){
 }
 
 // CALCULA A QUANTIDADE DE ELEMENTOS QUE TEM NA ARVORE
-int qtnodes(pnode *root){
+int qtnodes(pnode *root)
+{
     int qt = 0;
-    if(!ispEmpty(root)){
+    if(!ispEmpty(root))
+    {
         qt = 1;
         qt += qtnodes(root -> left);
         qt += qtnodes(root -> right);
@@ -191,18 +223,20 @@ int qtnodes(pnode *root){
 //HUFFMAN_HASH
 
 //ADICIONA O CAMINHO DA FOLHA NA HASHTABLE
-void hashvalue(pnode* first, int posi,char **h,char *bitschar){
-    if(!ispEmpty(first)){
-
-        if((first->left==NULL )&& (first->right==NULL)){
+void hashvalue(pnode* first, int posi,char **h,char *bitschar)
+{
+    if(!ispEmpty(first))
+    {
+        if((first->left==NULL )&& (first->right==NULL))
+        {
             int i, local;
             local=first->c;
-            for(i=0;i<posi;i++){
+            for(i=0;i<posi;i++)
+            {
                 h[local][i]=bitschar[i];
             }
             h[local][posi]='\0';
         }else{
-
             int lef = posi;
             bitschar[lef]='0';
             lef++;
@@ -217,7 +251,8 @@ void hashvalue(pnode* first, int posi,char **h,char *bitschar){
 }
 
 //CRIA UMA HASHTABLE COM OS CAMINHOS DE SUAS RESPECTIVAS FOLHAS
-char **hasharvore(pnode* first){
+char **hasharvore(pnode* first)
+{
     int posi=0, i;
     char *bitschar ;
     char **has;
@@ -226,7 +261,8 @@ char **hasharvore(pnode* first){
     pnode* no = first;
     //Aloco memoria para a has
     has = (char**)malloc(256*sizeof(char*));
-    for(i=0;i<256;i++){
+    for(i=0;i<256;i++)
+    {
         has[i] = (char*)malloc(256*sizeof(char));
     }
 
@@ -238,7 +274,8 @@ char **hasharvore(pnode* first){
 //TEMPFUNCTIONS
 
 //CRIA UM ARQUIVO TEMPORARIO(temp.txt)
-void maketempfile(FILE *f, char **hash){
+void maketempfile(FILE *f, char **hash)
+{
     setlocale(LC_ALL,"");
     unsigned char x;
     int i;
@@ -248,12 +285,15 @@ void maketempfile(FILE *f, char **hash){
     rewind(f);
 
     //HEADERBINARYTEMP
-    for(i = 0; i < 16; i++){
+    for(i = 0; i < 16; i++)
+    {
         fputc('0',temp);
     }
-    while(1){
+    while(1)
+    {
         x = fgetc(f);
-        if(feof(f)){
+        if(feof(f))
+        {
             break;
         }
         fputs(hash[x],temp);
@@ -262,7 +302,8 @@ void maketempfile(FILE *f, char **hash){
 }
 
 //CALCULA O LIXO E COLOCA NO ARQUIVO TEMPORARIO(temp.txt)
-int getnputtempTrash(){
+int getnputtempTrash()
+{
     int auxtrash, resto, i, trash, x = 0;
     FILE *temp;
     node *TRASHLIST;
@@ -270,14 +311,16 @@ int getnputtempTrash(){
     TRASHLIST = createnode();
     temp = fopen("temp.txt","r+");
     fseek(temp,16,SEEK_SET);
-    while(fgetc(temp) != EOF){
+    while(fgetc(temp) != EOF)
+    {
         x++;
     }
     printf("Tamanho Total %d\n", x);
     trash = 8-(x%8);
     printf("Tamanho Lixo %d\n", trash);
 
-    if(trash == 8){
+    if(trash == 8)
+    {
         trash = 0;
     }
     auxtrash = trash;
@@ -287,7 +330,8 @@ int getnputtempTrash(){
         TRASHLIST = insertnode(TRASHLIST,resto,0);
     }
     fseek(temp,0,SEEK_SET);
-    while(!isEmpty(TRASHLIST)){
+    while(!isEmpty(TRASHLIST))
+    {
         fputc('0' + TRASHLIST -> v,temp);
         TRASHLIST = TRASHLIST -> nextnode;
     }
@@ -296,20 +340,23 @@ int getnputtempTrash(){
 }
 
 //COLOCA O TAMANHO DA ARVORE NO ARQUIVO TEMPORARIO(temp.txt)
-void puttempSize(int qt){
+void puttempSize(int qt)
+{
     int i, resto;
     FILE *temp;
     node *QTLIST;
 
     QTLIST = createnode();
-    for(i = 0; i < 13; i++){
+    for(i = 0; i < 13; i++)
+    {
         resto = qt%2;
         qt = qt/2;
         QTLIST = insertnode(QTLIST,resto,0);
     }
     temp = fopen("temp.txt","r+");
     fseek(temp,3,SEEK_SET);
-    while(!isEmpty(QTLIST)){
+    while(!isEmpty(QTLIST))
+    {
         fputc('0' + QTLIST -> v,temp);
         QTLIST = QTLIST -> nextnode;
     }
@@ -317,7 +364,8 @@ void puttempSize(int qt){
 }
 
 //COMPLETA O ARQUIVO TEMPORARIO COM OS BITS DE LIXO
-void completetempfile(int trash){
+void completetempfile(int trash)
+{
     FILE *temp;
     temp = fopen("temp.txt","r+");
     fseek(temp,0,SEEK_END);
@@ -330,7 +378,8 @@ void completetempfile(int trash){
 //HEADER
 
 //OBTEM OS 8 PRIMEIROS BITS(8 PRIMEIROS CHARS) DO ARQUIVO TEMPORARIO(temp.txt) E IMPRIME O CHAR CORRESPONDENTE AOS 8 BITS NO HEADER DO ARQUIVO COMPRIMIDO
-void getnputfirstbyte(FILE *Writeoutput){
+void getnputfirstbyte(FILE *Writeoutput)
+{
     int i;
     FILE *temp;
     temp = fopen("temp.txt","r");

@@ -5,13 +5,11 @@ CONFIG -= qt
 
 SOURCES += main.c \
     avl.c \
-    arvoreBinaria.c \
-    menus.c
+    cp.c \
+    list.c
 
 DISTFILES += \
     script.r
 
 HEADERS += \
-    avl.h \
-    arvoreBinaria.h \
-    menus.h
+    cp.h

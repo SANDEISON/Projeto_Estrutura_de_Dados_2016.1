@@ -1,6 +1,7 @@
+/* list.c */
 #include <stdlib.h>
 #include <stdio.h>
-#include "lista.h"
+#include "cp.h"
 
 struct node
 {

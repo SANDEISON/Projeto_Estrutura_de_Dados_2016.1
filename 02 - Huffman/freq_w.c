@@ -3,18 +3,26 @@
 #include <locale.h>
 #include "freq_w.h"
 
-int *freq_w(FILE *f){
-    setlocale(LC_ALL,"");//DEFINE A LOCALIZACAO ATUAL.
+#define NAO_FIM 1
+
+int *freq_w(FILE *f)
+{
+    setlocale(LC_ALL,"");
+
     unsigned char x;
 	int i;
 	int *countsort;
-	countsort = (int*)malloc(256*sizeof(int));
-	for ( i = 0; i < 256; i++ ){
+
+    countsort = (int*)malloc(256*sizeof(int));
+    for (i = 0; i < 256; i++)
+    {
 		countsort[i] = 0;
 	}
-	while(1){
+    while(NAO_FIM)
+    {
 		x = fgetc(f);
-		if(feof(f)){
+        if(feof(f))
+        {
 			break;
 		}
 		countsort[x]++;
