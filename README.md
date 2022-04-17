@@ -12,7 +12,6 @@
 
 
   Disciplina : [Estrutura de Dados] (https://sites.google.com/a/ic.ufal.br/marcio/ "Acesse Aqui!")
-  Email : <mrsj@softex.cin.ufpe.br>
 
 
 
