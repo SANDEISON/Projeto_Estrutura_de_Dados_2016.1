@@ -20,15 +20,11 @@
 
 
   [Sandeison Fernandes](https://www.linkedin.com/in/SandeisonFernandes "Sandeison Fernandes")
-  Cristina Dias
   Email : <ssf@ic.ufal.br>
-  Email : <cdsa@cin.ufpe.br>
-
+  
 
   [Jonatas Gonzaga](https://github.com/jgaraujo "Jonatas Gonzaga")
-  Eric Anderson
   Email : <jga@ic.ufal.br>
-  Email : <eafs3@cin.ufpe.br>
 
 
 
