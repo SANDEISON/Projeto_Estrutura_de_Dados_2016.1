@@ -7,10 +7,7 @@
 
 
 ###Professor
-###Professor
   [Márcio Ribeiro](https://sites.google.com/a/ic.ufal.br/marcio/ "Professor Márcio Ribeiro")
-  [Marcondes Ricarte](http://lattes.cnpq.br/7666245847142592 "Professor Marcondes Ricarte")
-
   Email : <marcio@ic.ufal.br>
 
 
@@ -19,7 +16,6 @@
 
 
 
-:mortar_board: Alunos
 :mortar_board: Alunos
 
 
